@@ -1,0 +1,5 @@
+# Redirect domain aliases to primary domain
+https://nowtheweather.com/* https://and.nowtheweather.com/:splat 301!
+
+# Optional: Redirect default Netlify subdomain to primary domain
+https://vigilant-mclean-6a1c91.netlify.com/* https://and.nowtheweather.com/:splat 301!
