@@ -10,7 +10,9 @@ import Fuse from "fuse.js";
 const placeholders = [
 	"Acknowledge angels",
 	"All hail the glow cloud",
-	"Destroy Desert Bluffs"
+	"Destroy Desert Bluffs",
+	"Hide from the librarians",
+	"Enter the dog park"
 ];
 
 const lightGray = "#494b4b";
@@ -53,15 +55,22 @@ export const SearchBar = ({ items, filter }) => {
 	};
 	const fuse = new Fuse(items, searchOptions);
 
+	const generateRandomPlaceholder = () => random(placeholders);
+	const [currentPlaceholder, setPlaceholder] = React.useState(generateRandomPlaceholder());
+	const setNewPlaceholder = () => setPlaceholder(generateRandomPlaceholder());
+
 	const handleChange = ({ target }) => {
 		const filtered = fuse.search(target.value);
     filter(filtered);
+    if (!target.value) {
+			setNewPlaceholder();
+		}
 	};
 
 	return (
 		<SearchContainer elevation={2}>
 			<SearchIcon/>
-			<SearchBarText placeholder={random(placeholders)} autoFocus onChange={handleChange}/>
+			<SearchBarText placeholder={currentPlaceholder} autoFocus onChange={handleChange}/>
 			<SearchCount>
 			<span>
 				{items.length} results
