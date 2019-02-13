@@ -10,6 +10,7 @@ const stripQuotes = (string) => string.slice(1, -1);
 
 const MediaCard = styled(Card)`
 	margin-bottom: 2rem;
+	cursor: pointer;
 `;
 
 const CardTitles = styled.div`
@@ -45,16 +46,20 @@ const Text = styled(Typography)`
 	${textSize3}
 `;
 
+const Content = styled(CardContent)`
+	padding-bottom: 16px !important;
+`;
+
 export const Media = ({ url, num, episode, song, artist }) =>
-	<MediaCard className="media" elevation={12}>
-		<CardContent>
+	<MediaCard className="media" elevation={7}>
+		<Content>
 			<CardTitles>
 				<CardTitle variant="h2">{episode}</CardTitle>
 				<CardTitle variant="h2">{num}</CardTitle>
 			</CardTitles>
-			{url && <VideoContainer>
-				<YoutubeVideo videoId={url} opts={{ width: 350, height: 250 }}/>
-			</VideoContainer>}
+			{/*{url && <VideoContainer>*/}
+				{/*<YoutubeVideo videoId={url} opts={{ width: 350, height: 250 }}/>*/}
+			{/*</VideoContainer>}*/}
 			<Text>{artist} - {stripQuotes(song)}</Text>
-		</CardContent>
+		</Content>
 	</MediaCard>;

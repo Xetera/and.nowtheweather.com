@@ -19,5 +19,4 @@ const Section = styled.div`
 
 export const Description = () =>
 	<Section>
-		<Text variant="p" align="center">All previous meteorological news from Nightvale!</Text>
 	</Section>;
