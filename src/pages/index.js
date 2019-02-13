@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 import { Media } from "../components/media";
 import { SearchBar } from "../components/search";
 import { Title } from "../components/title";
+import { SiteHead } from "../components/head";
 
 
 const Root = styled.div`
@@ -77,6 +78,7 @@ export default withSiteData(({ weather }) => {
 	};
 	return (
 		<Root>
+			<SiteHead/>
 			<TitleWrapper>
 				<Title/>
 			</TitleWrapper>
