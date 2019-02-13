@@ -2,7 +2,7 @@ import { fetchWeather } from "./src/scrape";
 
 
 export default {
-  siteRoot: "https://and.nowtheweather.com",
+  siteRoot: "http://localhost:3000",
   getSiteData: async () => {
     return ({
       weather: await fetchWeather(),

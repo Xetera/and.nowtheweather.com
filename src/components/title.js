@@ -45,7 +45,7 @@ export const Title = () =>
 		<Centered>
 			<Nightvale align="right" className="nightvale" variant="h1">And now, the weather</Nightvale>
 			<NightvaleSubtitle variant="h4" align="right">
-				All previous meteorological news from Nightvale
+        Nightvale meteorology
 			</NightvaleSubtitle>
 		</Centered>
 	</TextWrapper>;

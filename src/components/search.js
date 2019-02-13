@@ -54,7 +54,6 @@ export const SearchBar = ({ items, filter }) => {
 	const fuse = new Fuse(items, searchOptions);
 
 	const handleChange = ({ target }) => {
-		console.log(target.value);
 		const filtered = fuse.search(target.value);
     filter(filtered);
 	};
