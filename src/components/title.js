@@ -43,7 +43,7 @@ const Centered = styled.span`
 export const Title = () =>
 	<TextWrapper>
 		<Centered>
-			<Nightvale align="right" className="nightvale" variant="h1">And now, the weather</Nightvale>
+			<Nightvale className="nightvale" variant="h1" align="right">And now, the weather</Nightvale>
 			<NightvaleSubtitle variant="h4" align="right">
         Nightvale meteorology
 			</NightvaleSubtitle>

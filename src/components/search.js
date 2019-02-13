@@ -2,7 +2,7 @@ import * as React from "react";
 import Paper from "@material-ui/core/es/Paper/Paper";
 import InputBase from "@material-ui/core/es/InputBase/InputBase";
 import styled from "styled-components";
-import { textSize3 } from "../style";
+import { textSize4 } from "../style";
 import { random } from "../utils";
 import Icon from "@material-ui/icons/Search"
 import Fuse from "fuse.js";
@@ -40,14 +40,16 @@ const SearchCount = styled.div`
 	margin-left: 5px;
 	span {
 		margin: 0;
-		${textSize3}
+		font-size: 1rem;
+		text-align: right;
 	}
 	input {
 	padding: 0
 	}
 `;
 
-export const SearchBar = ({ items, filter }) => {
+export const SearchBar = ({ originalItems, items, filter }) => {
+	const originaLength = items.length;
 	const searchOptions = {
 		shouldSort: true,
 		threshold: .6,
@@ -73,7 +75,7 @@ export const SearchBar = ({ items, filter }) => {
 			<SearchBarText placeholder={currentPlaceholder} autoFocus onChange={handleChange}/>
 			<SearchCount>
 			<span>
-				{items.length} results
+				{items.length} / {originalItems.length}
 			</span>
 			</SearchCount>
 		</SearchContainer>

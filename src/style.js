@@ -12,7 +12,7 @@ export const textSizeTitle = css`
 		font-size: 4rem !important;
 	}
 	@media(max-width: 400px) {
-		font-size: 3rem !important;
+		font-size: 3.5rem !important;
 	}
 `;
 export const textSize1 = css`
@@ -39,6 +39,16 @@ export const textSize3 = css`
 	font-size: 1.6rem !important;
 	@media(max-width: 767px) {
 		font-size: 1.1rem !important;
+	}
+	@media(max-width: 400px) {
+		font-size: 1rem !important;
+	}
+`;
+
+export const textSize4 = css`
+	font-size: 1.5rem !important;
+	@media(max-width: 767px) {
+		font-size: 1rem !important;
 	}
 	@media(max-width: 400px) {
 		font-size: .8rem !important;

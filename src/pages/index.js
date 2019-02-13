@@ -5,6 +5,7 @@ import { Media } from "../components/media";
 import { SearchBar } from "../components/search";
 import { Title } from "../components/title";
 import { SiteHead } from "../components/head";
+import GithubCorner from "react-github-corner";
 
 
 const Root = styled.div`
@@ -20,7 +21,7 @@ const MediaContainer = styled.div`
   	width: 100%;
   }
   @media(min-width: 1024px) {
-  	width: 70%;
+  	width: 65%;
   }
 `;
 
@@ -82,12 +83,17 @@ export default withSiteData(({ weather }) => {
 			<TitleWrapper>
 				<Title/>
 			</TitleWrapper>
-
 			<MainColumn>
+				<GithubCorner
+					href="https://github.com/xetera/and.nowtheweather.com"
+					bannerColor="black"
+					target="_blank"
+					direction="left"
+					ariaLabel="See the code on github"
+					octoColor="white"/>
 				<MediaContainer>
-					{/*<Description/>*/}
 					<SearchBarWrapper>
-						<SearchBar items={episodes} filter={changeEpisodes}/>
+						<SearchBar items={episodes} originalItems={weather} filter={changeEpisodes}/>
 					</SearchBarWrapper>
 					<MediaWrapper>
 						{episodes.map(data => <Media {...data} key={data.episode}/>)}
