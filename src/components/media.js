@@ -19,6 +19,7 @@ const CardTitles = styled.div`
 `;
 
 const CardTitle = styled(Typography)`
+	font-weight: 500 !important;
 	${textSize1}
 `;
 
@@ -40,11 +41,12 @@ const YoutubeVideo = styled(Youtube)`
 `;
 
 const Text = styled(Typography)`
+	font-weight: 300 !important;
 	${textSize3}
 `;
 
 export const Media = ({ url, num, episode, song, artist }) =>
-	<MediaCard className="media">
+	<MediaCard className="media" elevation={12}>
 		<CardContent>
 			<CardTitles>
 				<CardTitle variant="h2">{episode}</CardTitle>

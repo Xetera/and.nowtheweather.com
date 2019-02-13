@@ -28,7 +28,7 @@ const TitleWrapper = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background-color: #804177;
+background:linear-gradient(135deg, #932c8f 0%,#651368 100%);
 	padding: 20px 0 45px 0;
 	--webkit-clip-path: polygon(0 0, 100% 0, 100% 61%, 0% 100%);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 81%);
@@ -52,19 +52,19 @@ const MediaWrapper = styled.div`
   justify-content: center;
   .media {
   	&:nth-child(5n + 0) {
-    	background: linear-gradient(135deg, #CE9FFC 0%,#7367F0 100%);
+    	background:  #CE9FFC;
     }
   	&:nth-child(5n + 1) {
-			background: linear-gradient(135deg, #13f1fc 0%,#0470dc 100%);
+			background: #66fcf5;
     }
   	&:nth-child(5n + 2) {
-			background:linear-gradient(135deg, #FF57B9 0%,#A704FD 100%);
+			background: #FF57B9;
     }
   	&:nth-child(5n + 3) {
-			background:linear-gradient(135deg, #f2d50f 0%,#da0641 100%);
+			background: #f2d50f;
     }
   	&:nth-child(5n + 4) {
-			background:linear-gradient(135deg, #c3ec52 0%,#0ba29d 100%);
+			background: #c3ec52;
     }
   }
 `;

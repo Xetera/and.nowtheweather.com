@@ -2,33 +2,37 @@ import * as React from "react";
 import Paper from "@material-ui/core/es/Paper/Paper";
 import InputBase from "@material-ui/core/es/InputBase/InputBase";
 import styled from "styled-components";
-import { responsiveText, textSize3 } from "../style";
-import Typography from "@material-ui/core/es/Typography/Typography";
-import IconButton from "@material-ui/core/es/IconButton/IconButton";
+import { textSize3 } from "../style";
+import { random } from "../utils";
+import Icon from "@material-ui/icons/Search"
+
 const placeholders = [
 	"Acknowledge angels",
 	"All hail the glow cloud",
 	"Destroy Desert Bluffs"
 ];
 
+const SearchIcon = styled(Icon)`
+	margin-right: 5px;
+	color: #494b4b;
+`;
+
 const SearchContainer = styled(Paper)`
-	padding: 10px;
 	display: flex;
-	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
 `;
 
 const SearchBarText = styled(InputBase)`
 	text-overflow: ellipsis;
-	width: 60%;
+	width: 100%;
 	${textSize3}
 `;
 
 const SearchCount = styled.div`
-	display: flex;
 	min-width: 64px;
-	justify-content: center;
-	align-items: center;
 	color: grey;
+	flex-shrink: 0;
 	span {
 		margin: 0;
 		${textSize3}
@@ -39,8 +43,9 @@ const SearchCount = styled.div`
 `;
 
 export const SearchBar = ({ results }) =>
-	<SearchContainer elevation={31}>
-		<SearchBarText placeholder="Acknowledge angels"/>
+	<SearchContainer elevation={2}>
+		<SearchIcon/>
+		<SearchBarText placeholder={random(placeholders)}/>
 		<SearchCount>
 			<span>
 				{results} results

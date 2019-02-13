@@ -1,3 +1,3 @@
 export const songs = {
-	"1": "XdzSQIejRQM"
+	1: "XdzSQIejRQM"
 };

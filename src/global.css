@@ -13,9 +13,9 @@ body {
   overflow-x: hidden;
   padding: 0;
   margin: 0;
-  background-color: #2b2c2c;
+  background-color: #f6fafa;
 }
-* {
-  font-family: "Rubik", Arial, "sans-serif";
+h2, h3, h4, p, span {
+  font-family: "Rubik", Arial, "sans-serif" !important;
 }
 

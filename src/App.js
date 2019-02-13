@@ -6,7 +6,5 @@ import "./global.css"
 
 export default () =>
 	<Root>
-		<div className="content">
-			<Routes/>
-		</div>
+		<Routes/>
 	</Root>
