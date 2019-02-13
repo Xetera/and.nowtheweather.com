@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+@font-face {
+  font-family: "Nightvale";
+  src: url("../public/big_noodle_titling.ttf") format("truetype");
+}
+
+.nightvale {
+  font-family: "Nightvale", Arial, "sans-serif" !important;
+	color: white;
+}
+
+body {
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  background-color: #2b2c2c;
+}
+* {
+  font-family: "Rubik", Arial, "sans-serif";
+}
+
