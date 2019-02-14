@@ -5,8 +5,18 @@ import styled, { css } from "styled-components";
 import Typography from "@material-ui/core/es/Typography/Typography";
 import Youtube from "react-youtube";
 import { textSize1, textSize3 } from "../style";
+import Note from "@material-ui/icons/MusicNoteOutlined";
 
 const stripQuotes = (string) => string.slice(1, -1);
+
+const MusicalNote = styled(Note)`
+	font-size: 24px !important;
+	@media(min-width: 767px) { 
+		font-size: 32px !important; 
+	}
+	color: #6a696c;
+	padding-right: 5px;
+`;
 
 const MediaCard = styled(Card)`
 	margin-bottom: 2rem;
@@ -50,6 +60,12 @@ const Content = styled(CardContent)`
 	padding-bottom: 16px !important;
 `;
 
+const SongNameContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+`;
+
 export const Media = ({ url, num, episode, song, artist }) =>
 	<MediaCard className="media" elevation={7}>
 		<Content>
@@ -58,8 +74,11 @@ export const Media = ({ url, num, episode, song, artist }) =>
 				<CardTitle variant="h2">{num}</CardTitle>
 			</CardTitles>
 			{/*{url && <VideoContainer>*/}
-				{/*<YoutubeVideo videoId={url} opts={{ width: 350, height: 250 }}/>*/}
+			{/*<YoutubeVideo videoId={url} opts={{ width: 350, height: 250 }}/>*/}
 			{/*</VideoContainer>}*/}
-			<Text>{artist} - {stripQuotes(song)}</Text>
+			<SongNameContainer>
+				<MusicalNote/>
+				<Text>{artist} - {stripQuotes(song)}</Text>
+			</SongNameContainer>
 		</Content>
 	</MediaCard>;
