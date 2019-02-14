@@ -1,5 +1,5 @@
 import * as React from "react";
-import { textSize3, textSizeTitle } from "../style";
+import { textSize2, textSize3, textSizeTitle } from "../style";
 import styled, { css } from "styled-components";
 import Typography from "@material-ui/core/Typography"
 
@@ -19,7 +19,7 @@ const Nightvale = styled(Typography)`
 const NightvaleSubtitle = styled(Typography)`
 	color: white !important;
 	${titleFont}
-	${textSize3}
+	${textSize2}
 `;
 
 const Eye = styled.img`
@@ -43,8 +43,8 @@ const Centered = styled.span`
 export const Title = () =>
 	<TextWrapper>
 		<Centered>
-			<Nightvale className="nightvale" variant="h1" align="right">And now, the weather</Nightvale>
-			<NightvaleSubtitle variant="h4" align="right">
+			<Nightvale className="nightvale" variant="h1" align="center">And now, the weather</Nightvale>
+			<NightvaleSubtitle variant="h4" align="center">
         Nightvale meteorology
 			</NightvaleSubtitle>
 		</Centered>

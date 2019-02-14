@@ -1,8 +1,38 @@
 import axios from "axios";
 import { JSDOM } from "jsdom";
 import { songs } from "./songs";
-import Youtube from "simple-youtube-api";
 import dotenv from "dotenv";
+import * as fs from "fs";
+import { promisify } from "util"
+
+/**
+ * This file was used to scrape and combine the data that the website
+ * current serves statically
+ */
+
+const writeFileAsync = promisify(fs.writeFile).bind(fs);
+
+
+const getPosts = () => {
+	const tumblr = axios.create({
+		baseURL: "https://api.tumblr.com",
+		params: {
+			api_key: process.env.TUMBLR_KEY
+		}
+	});
+	const gatherAllPosts = async (url) => {
+		const { data: { response } } = await tumblr.get(url);
+
+		const urls = response.posts.map(post => post.post_url);
+
+		if (!response._links) {
+			return urls;
+		}
+
+		return [...urls, ...await gatherAllPosts(response._links.next.href)];
+	};
+	return gatherAllPosts('/v2/blog/cecilspeaks/posts/text');
+};
 
 dotenv.load();
 
@@ -12,7 +42,7 @@ const genSelector = (dom) =>
 const flatMap = fn => arr =>
 	arr.map(fn).reduce((all, arr) => [...all, ...arr], []);
 
-const youtube = new Youtube(process.env.YOUTUBE_KEY);
+const FILE_LOCATION = "songs.json";
 
 const WIKI = "http://nightvale.wikia.com/wiki/Weather";
 
@@ -24,16 +54,6 @@ const YEARS = 7;
 const headers = {
 	"User-Agent": "https://and.nowtheweather.com"
 };
-
-export const lookUpWeather = ({ episode, artist }) =>
-	youtube.searchVideos(`${artist} - ${episode}`, 1, { part: "statistics" })
-		.then(([item]) => item)
-		.then(({ id, title, durationSeconds }) => ({
-			id,
-			title,
-			length: durationSeconds,
-		}))
-		.then(console.log);
 
 const filterTables = ($, years) => $('h2 + .wikitable').slice(0, years);
 
@@ -67,6 +87,17 @@ const processRows = rows => rows.reduce((all, row) => {
 	return [...all, song]
 }, []);
 
+
+const innerJoin = (one, two, key) =>
+	one.reduce((acc, current) => ({
+		...acc,
+		[one[key]]: {
+			...current,
+			...two[key]
+		}
+	}), {});
+
+
 /**
  * Gather weather data from the Nightvale wiki
  * @typedef {Object} Weather
@@ -77,12 +108,16 @@ const processRows = rows => rows.reduce((all, row) => {
  * @property {string | undefined} url - youtube song url
  * @return {Promise<Weather>}
  */
-export const fetchWeather = () => axios.get(WIKI, { headers }).then(({ data }) => {
+export const fetchWeather = () => axios.get(WIKI, { headers }).then(async ({ data }) => {
 	const dom = new JSDOM(data);
 	const { document } = dom.window;
 	const $ = genSelector(document);
 
 	const tables = filterTables($, YEARS);
 	const rows = extractTableRows(tables);
-	return processRows(rows);
+	const results = processRows(rows);
+	const someResults = results.slice(0, 50);
+	const all = await getPosts();
+	await writeFileAsync('posts.json', JSON.stringify(all));
+	return results
 });

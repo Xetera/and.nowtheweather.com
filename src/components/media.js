@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/es/Typography/Typography";
 import Youtube from "react-youtube";
 import { textSize1, textSize3 } from "../style";
 import Note from "@material-ui/icons/MusicNoteOutlined";
+import Book from "@material-ui/icons/ChatBubbleOutline"
 
 const stripQuotes = (string) => string.slice(1, -1);
 
@@ -19,7 +20,7 @@ const MusicalNote = styled(Note)`
 `;
 
 const MediaCard = styled(Card)`
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 	cursor: pointer;
 `;
 
@@ -53,6 +54,7 @@ const YoutubeVideo = styled(Youtube)`
 
 const Text = styled(Typography)`
 	font-weight: 300 !important;
+	padding-right: 5px;
 	${textSize3}
 `;
 
@@ -63,22 +65,55 @@ const Content = styled(CardContent)`
 const SongNameContainer = styled.div`
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
 	align-items: center;
 `;
 
-export const Media = ({ url, num, episode, song, artist }) =>
-	<MediaCard className="media" elevation={7}>
-		<Content>
-			<CardTitles>
-				<CardTitle variant="h2">{episode}</CardTitle>
-				<CardTitle variant="h2">{num}</CardTitle>
-			</CardTitles>
-			{/*{url && <VideoContainer>*/}
-			{/*<YoutubeVideo videoId={url} opts={{ width: 350, height: 250 }}/>*/}
-			{/*</VideoContainer>}*/}
-			<SongNameContainer>
-				<MusicalNote/>
-				<Text>{artist} - {stripQuotes(song)}</Text>
-			</SongNameContainer>
-		</Content>
-	</MediaCard>;
+const Flex = styled.span`
+	display: flex;
+`;
+
+const SongLink = styled.a`
+	color: unset;
+	text-decoration: unset;
+	:hover {
+		text-decoration: underline;
+	}
+`;
+
+export const Media = ({ url, num, episode, song, artist, onTranscript }) => {
+	const [open, setOpen] = React.useState(false);
+	const sendTranscript = () => onTranscript({ num });
+	const toggleVideo = () => setOpen(!open);
+
+	return (
+		<MediaCard className="media" elevation={1} onClick={toggleVideo}>
+			<Content>
+				<CardTitles>
+					<CardTitle variant="h2">{episode}</CardTitle>
+					<CardTitle variant="h2">{num}</CardTitle>
+				</CardTitles>
+				{url && open &&
+				<VideoContainer>
+					<YoutubeVideo videoId={url} opts={{ width: 350, height: 250 }}/>
+				</VideoContainer>
+				}
+				<SongNameContainer>
+					<Flex>
+						<MusicalNote/>
+						<Text>
+							<SongLink
+								title="Open song in a new tab"
+								target="_blank"
+								href={`https://www.youtube.com/watch?v=${url}`}
+							>
+								{artist} - {stripQuotes(song)}
+							</SongLink>
+						</Text>
+					</Flex>
+					<Book title="Episode transcripts" onClick={sendTranscript}/>
+				</SongNameContainer>
+			</Content>
+		</MediaCard>
+	);
+};

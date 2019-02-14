@@ -1,14 +1,14 @@
 import React from 'react'
 import { withSiteData } from 'react-static'
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Media } from "../components/media";
 import { SearchBar } from "../components/search";
 import { Title } from "../components/title";
 import { SiteHead } from "../components/head";
 import GithubCorner from "react-github-corner";
-import { Description } from "../components/description";
 import { Footer } from "../components/footer";
-import Paper from "@material-ui/core/Paper";
+import { LOADING_TRANSCRIPT, parseTranscript } from "../utils";
+import { TranscriptModal } from "../components/modal";
 
 
 const Root = styled.div`
@@ -18,7 +18,7 @@ const Root = styled.div`
 const MediaContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 2rem auto;
   text-align: left;
   @media(min-width: 767px) {
   	width: 100%;
@@ -34,14 +34,12 @@ const MainColumn = styled.div`
 
 const TitleWrapper = styled.header`
 	display: flex;
+	height: 250px;
 	flex-direction: column;
 	justify-content: center;
-background:linear-gradient(135deg, #932c8f 0%,#651368 100%);
-	padding: 20px 0 45px 0;
-	--webkit-clip-path: polygon(0 0, 100% 0, 100% 61%, 0% 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 81%);
+	background:linear-gradient(135deg, #932c8f 0%,#651368 100%);
+	padding: 20px 0 20px 0;
 `;
-
 
 const MediaWrapper = styled.div`
   justify-content: center;
@@ -68,7 +66,7 @@ const MediaWrapper = styled.div`
 `;
 
 const SearchBarWrapper = styled.div`
-	margin: 20px 0;
+	margin: 0 0 20px 0;
 `;
 
 const SiteWrapper = styled(Root)`
@@ -77,42 +75,62 @@ const SiteWrapper = styled(Root)`
   min-height: 100vh;
 `;
 
-export default withSiteData(({ weather }) => {
-	const [episodes, setEpisodes] = React.useState(weather);
+export default withSiteData(({ data }) => {
+	const [episodes, setEpisodes] = React.useState(data);
+	const [modal, setModal] = React.useState(false);
+	const [transcript, setTranscript] = React.useState(LOADING_TRANSCRIPT);
 
 	const changeEpisodes = newEpisodes => {
 		if (!newEpisodes.length) {
-			return setEpisodes(weather);
+			return setEpisodes(data);
 		}
 		return setEpisodes(newEpisodes);
 	};
+
+	const findTranscript = num => data.find(item => item.num == num).transcript;
+
+	const addTranscript = async track => {
+		setModal(true);
+		const transcript = findTranscript(String(track.num));
+		const dom = await parseTranscript(transcript);
+		setTranscript(dom.outerHTML);
+	};
+
+	const closeModal = () => {
+		setModal(false);
+		setTranscript(LOADING_TRANSCRIPT);
+	};
+
 	return (
 		<SiteWrapper>
-			{/*<SiteWrapper>*/}
-				<SiteHead/>
-				<TitleWrapper>
-					<Title/>
-				</TitleWrapper>
-				<MainColumn>
-					<GithubCorner
-						href="https://github.com/xetera/and.nowtheweather.com"
-						bannerColor="black"
-						target="_blank"
-						direction="left"
-						ariaLabel="See the code on github"
-						octoColor="white"/>
-					<MediaContainer>
-						<Description/>
-						<SearchBarWrapper>
-							<SearchBar items={episodes} originalItems={weather} filter={changeEpisodes}/>
-						</SearchBarWrapper>
-						<MediaWrapper>
-							{episodes.map(data => <Media {...data} key={data.episode}/>)}
-						</MediaWrapper>
-					</MediaContainer>
-				</MainColumn>
-				<Footer/>
-			{/*</SiteWrapper>*/}
+			<SiteHead/>
+			<TitleWrapper>
+				<Title/>
+			</TitleWrapper>
+			<MainColumn>
+				<GithubCorner
+					href="https://github.com/xetera/and.nowtheweather.com"
+					bannerColor="black"
+					target="_blank"
+					ariaLabel="See the code on github"
+					octoColor="white"/>
+				<MediaContainer>
+					<TranscriptModal content={transcript} open={modal} close={closeModal}/>
+					<SearchBarWrapper>
+						<SearchBar items={episodes} originalItems={data} filter={changeEpisodes}/>
+					</SearchBarWrapper>
+					<MediaWrapper>
+						{episodes.map(data =>
+							<Media
+								{...data}
+								key={data.episode}
+								onTranscript={addTranscript}
+							/>
+						)}
+					</MediaWrapper>
+				</MediaContainer>
+			</MainColumn>
+			<Footer/>
 		</SiteWrapper>
 	);
 });

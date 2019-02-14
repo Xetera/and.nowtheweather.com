@@ -9,8 +9,8 @@ const FooterPage = styled.footer`
 	justify-content: center;
 	background: linear-gradient(135deg, #932c8f 0%,#651368 100%);
 	padding: 20px 20px 20px 20px;
-	--webkit-clip-path: polygon(0 0, 100% 0, 100% 61%, 0% 100%);
-  clip-path: polygon(0 0, 100% 19%, 100% 100%, 0% 100%);
+	//--webkit-clip-path: polygon(0 0, 100% 0, 100% 61%, 0% 100%);
+  //clip-path: polygon(0 0, 100% 19%, 100% 100%, 0% 100%);
 `;
 
 const FooterText = styled.p`

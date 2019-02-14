@@ -25,7 +25,8 @@ const SearchIcon = styled(Icon)`
 const SearchContainer = styled(Paper)`
 	display: flex;
 	align-items: center;
-	padding: 10px;
+	border-radius: 0;
+	padding: 10px 20px;
 	height: 30px;
 	@media(min-width: 767px) {
 		height: 50px;
@@ -45,7 +46,7 @@ const SearchCount = styled.div`
 	margin-left: 5px;
 	span {
 		margin: 0;
-		font-size: 1rem;
+		font-size: 1.2rem;
 		text-align: right;
 	}
 	input {
@@ -54,7 +55,6 @@ const SearchCount = styled.div`
 `;
 
 export const SearchBar = ({ originalItems, items, filter }) => {
-	const originaLength = items.length;
 	const searchOptions = {
 		shouldSort: true,
 		threshold: .6,

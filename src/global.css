@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik');
+
 @font-face {
   font-family: "Nightvale";
   src: url("../public/big_noodle_titling.ttf") format("truetype");
@@ -20,8 +21,12 @@ body {
   background-color: #f6fafa;
 }
 
-h2, h3, h4, p, span, input {
+h2, h3, h4, p, span, input, li:not(.transcript) {
   font-family: "Rubik", Arial, "sans-serif" !important;
+}
+
+.transcript > * {
+  font-family: Roboto, sans-serif !important;
 }
 
 ::selection {
