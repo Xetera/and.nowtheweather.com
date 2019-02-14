@@ -14,9 +14,9 @@ const FooterPage = styled.footer`
 `;
 
 const FooterText = styled.p`
-	margin-bottom: 0;
+	margin: 0;
 	color: ghostwhite;
-	align-self: flex-end;
+	align-self: center;
 	${textSize1}
 `;
 
