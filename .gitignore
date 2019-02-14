@@ -4,3 +4,4 @@ artifacts/
 dist/
 .idea/
 .vscode/
+.env

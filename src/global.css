@@ -9,6 +9,10 @@
 	color: white;
 }
 
+html {
+  height: 100vh;
+}
+
 body {
   overflow-x: hidden;
   padding: 0;
@@ -18,5 +22,10 @@ body {
 
 h2, h3, h4, p, span, input {
   font-family: "Rubik", Arial, "sans-serif" !important;
+}
+
+::selection {
+  background:  #932c8f;
+  color: white;
 }
 

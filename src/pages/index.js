@@ -6,6 +6,9 @@ import { SearchBar } from "../components/search";
 import { Title } from "../components/title";
 import { SiteHead } from "../components/head";
 import GithubCorner from "react-github-corner";
+import { Description } from "../components/description";
+import { Footer } from "../components/footer";
+import Paper from "@material-ui/core/Paper";
 
 
 const Root = styled.div`
@@ -29,7 +32,7 @@ const MainColumn = styled.div`
 	padding: 1.5rem;
 `;
 
-const TitleWrapper = styled.div`
+const TitleWrapper = styled.header`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -68,6 +71,12 @@ const SearchBarWrapper = styled.div`
 	margin: 20px 0;
 `;
 
+const SiteWrapper = styled(Root)`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
 export default withSiteData(({ weather }) => {
 	const [episodes, setEpisodes] = React.useState(weather);
 
@@ -78,28 +87,32 @@ export default withSiteData(({ weather }) => {
 		return setEpisodes(newEpisodes);
 	};
 	return (
-		<Root>
-			<SiteHead/>
-			<TitleWrapper>
-				<Title/>
-			</TitleWrapper>
-			<MainColumn>
-				<GithubCorner
-					href="https://github.com/xetera/and.nowtheweather.com"
-					bannerColor="black"
-					target="_blank"
-					direction="left"
-					ariaLabel="See the code on github"
-					octoColor="white"/>
-				<MediaContainer>
-					<SearchBarWrapper>
-						<SearchBar items={episodes} originalItems={weather} filter={changeEpisodes}/>
-					</SearchBarWrapper>
-					<MediaWrapper>
-						{episodes.map(data => <Media {...data} key={data.episode}/>)}
-					</MediaWrapper>
-				</MediaContainer>
-			</MainColumn>
-		</Root>
+		<SiteWrapper>
+			{/*<SiteWrapper>*/}
+				<SiteHead/>
+				<TitleWrapper>
+					<Title/>
+				</TitleWrapper>
+				<MainColumn>
+					<GithubCorner
+						href="https://github.com/xetera/and.nowtheweather.com"
+						bannerColor="black"
+						target="_blank"
+						direction="left"
+						ariaLabel="See the code on github"
+						octoColor="white"/>
+					<MediaContainer>
+						<Description/>
+						<SearchBarWrapper>
+							<SearchBar items={episodes} originalItems={weather} filter={changeEpisodes}/>
+						</SearchBarWrapper>
+						<MediaWrapper>
+							{episodes.map(data => <Media {...data} key={data.episode}/>)}
+						</MediaWrapper>
+					</MediaContainer>
+				</MainColumn>
+				<Footer/>
+			{/*</SiteWrapper>*/}
+		</SiteWrapper>
 	);
 });
