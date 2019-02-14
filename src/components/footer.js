@@ -4,7 +4,7 @@ import { textSize1 } from "../style";
 
 const FooterPage = styled.footer`
 	height: 150px;
-	margin: 0 0 auto 0;
+	margin: auto 0 0 0;
 	display: flex;
 	justify-content: center;
 	background: linear-gradient(135deg, #932c8f 0%,#651368 100%);
