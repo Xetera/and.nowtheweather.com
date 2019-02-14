@@ -32,7 +32,7 @@ const Thumbnail = styled.img`
 export const Description = () =>
 	<Section>
 		<Text>
-			A small desert community where the sun is hot, the moon is beautiful,
-			and mysterious lights pass overhead as we all pretend to sleep
+			A friendly desert community where the sun is hot, the moon is beautiful,
+			and mysterious lights pass overhead while we all pretend to sleep
 		</Text>
 	</Section>;

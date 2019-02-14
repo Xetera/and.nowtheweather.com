@@ -50,19 +50,19 @@ const MediaWrapper = styled.div`
   		background-color: inherit;
   	}
   	&:nth-child(5n + 0) {
-    	border-left: 8px solid #CE9FFC;
+    	border-left: 8px solid #c239b3;
     }
   	&:nth-child(5n + 1) {
-    	border-left: 8px solid #66fcf5;
+    	border-left: 8px solid #00b7c3;
     }
   	&:nth-child(5n + 2) {
-    	border-left: 8px solid #FF57B9;
+    	border-left: 8px solid #e3008c;
     }
   	&:nth-child(5n + 3) {
-    	border-left: 8px solid #f2d50f;
+    	border-left: 8px solid #ffaa44;
     }
   	&:nth-child(5n + 4) {
-    	border-left: 8px solid #c3ec52;
+    	border-left: 8px solid #8cbd18;
     }
   }
 `;

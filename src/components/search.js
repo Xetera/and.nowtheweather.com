@@ -2,7 +2,7 @@ import * as React from "react";
 import Paper from "@material-ui/core/es/Paper/Paper";
 import InputBase from "@material-ui/core/es/InputBase/InputBase";
 import styled from "styled-components";
-import { textSize4 } from "../style";
+import { textSize3 } from "../style";
 import { random } from "../utils";
 import Icon from "@material-ui/icons/Search"
 import Fuse from "fuse.js";
@@ -26,11 +26,16 @@ const SearchContainer = styled(Paper)`
 	display: flex;
 	align-items: center;
 	padding: 10px;
+	height: 30px;
+	@media(min-width: 767px) {
+		height: 50px;
+	}
 `;
 
 const SearchBarText = styled(InputBase)`
 	text-overflow: ellipsis;
 	width: 100%;
+	${textSize3}
 `;
 
 const SearchCount = styled.div`
