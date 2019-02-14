@@ -12,10 +12,11 @@ const TranscriptWrapper = styled(Modal)`
 
 const ModalWrapper = styled.div`
 	display: flex;
+	border-radius: 4px;
 	flex-direction: column;
 	width: 400px;
 	@media(min-width: 767px) {
-		width: 800px;
+		width: 700px;
 	}
 	background-color: whitesmoke;
 	height: auto;
@@ -24,11 +25,16 @@ const ModalWrapper = styled.div`
 
 const Credits = styled.h5`
 	margin: 0;
+	align-self: flex-end;
 `;
 
 const TranscriptContent = styled.div`
 	overflow-y: scroll;
 	margin: 10px 0;
+	p {
+		font-size: 18px;
+		line-height: 1.42;
+	}
 `;
 
 const CloseButton = styled(Close)`
@@ -48,13 +54,13 @@ export const TranscriptModal = ({ content, close, open }) => {
 		<TranscriptWrapper open={open} onClose={close}>
 			<ModalWrapper className="transcript">
 				<Flex>
-					{/*<Credits>*/}
-						{/*Transcripts taken from <a target="_blank" href="https://cecilspeaks.tumblr.com/">Cecilspeaks</a>*/}
-					{/*</Credits>*/}
 					<CloseButton onClick={close}/>
 				</Flex>
 				{content === LOADING_TRANSCRIPT ? <div>Transcript loading...</div>
 					: <TranscriptContent dangerouslySetInnerHTML={{ __html: content }}/>}
+				<Credits>
+					Transcripts taken from <a target="_blank" href="https://cecilspeaks.tumblr.com/">Cecilspeaks</a>
+				</Credits>
 			</ModalWrapper>
 		</TranscriptWrapper>
 	);

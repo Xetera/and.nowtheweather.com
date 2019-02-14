@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/es/Typography/Typography";
 import Youtube from "react-youtube";
 import { textSize1, textSize3 } from "../style";
 import Note from "@material-ui/icons/MusicNoteOutlined";
-import Book from "@material-ui/icons/ChatBubbleOutline"
+import Book from "@material-ui/icons/NotesOutlined"
 
 const stripQuotes = (string) => string.slice(1, -1);
 

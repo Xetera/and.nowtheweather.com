@@ -20,6 +20,7 @@
     "jsdom": "^13.2.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
+    "react-ga": "^2.5.7",
     "react-github-corner": "^2.3.0",
     "react-hot-loader": "^4.3.12",
     "react-static": "^6.0.18",
