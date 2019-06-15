@@ -1,7 +1,7 @@
 import data from "./data.json"
 
 export default {
-  siteRoot: process.env.NODE_ENV === "production" ? "https://nowtheweather.com" : "http://localhost:3000",
+  siteRoot: process.env.NODE_ENV === "production" ? "https://and.nowtheweather.com" : "http://localhost:3000",
   getSiteData: async () => {
     return ({
       data,
