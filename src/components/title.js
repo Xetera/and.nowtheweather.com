@@ -1,51 +1,55 @@
 import * as React from "react";
 import { textSize2, textSize3, textSizeTitle } from "../style";
 import styled, { css } from "styled-components";
-import Typography from "@material-ui/core/Typography"
+import Typography from "@material-ui/core/Typography";
 
-const eyeImage = "https://66.media.tumblr.com/f87ca6958f19b1380e830a3cf3c9a401/tumblr_mqt86daL6l1r6ptieo1_1280.gif";
+const eyeImage =
+  "https://66.media.tumblr.com/f87ca6958f19b1380e830a3cf3c9a401/tumblr_mqt86daL6l1r6ptieo1_1280.gif";
 
 const titleFont = css`
-	font-family: "Nightvale", Arial, "sans-serif" !important;
+  font-family: "Nightvale", Arial, "sans-serif" !important;
 `;
 
 const Nightvale = styled(Typography)`
-	color: white !important;
-	display: inline !important;
-	${titleFont}
-	${textSizeTitle}
+  color: white !important;
+  display: inline !important;
+  ${titleFont}
+  ${textSizeTitle}
 `;
 
 const NightvaleSubtitle = styled(Typography)`
-	color: white !important;
-	${titleFont}
-	${textSize2}
+  color: white !important;
+  ${titleFont}
+  ${textSize2}
 `;
 
 const Eye = styled.img`
-	max-height: 50px;
-	top: 0;
-	padding: 10px 0;
-	opacity: .6;
+  max-height: 50px;
+  top: 0;
+  padding: 10px 0;
+  opacity: 0.6;
 `;
 
 const TextWrapper = styled.div`
-	width: 80%;
-	align-self: center;
+  width: 80%;
+  align-self: center;
 `;
 
 const Centered = styled.span`
-	display: inline-flex;
-	flex-direction: column;
-	justify-content: center;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
-export const Title = () =>
-	<TextWrapper>
-		<Centered>
-			<Nightvale className="nightvale" variant="h1" align="center">And now, the weather</Nightvale>
-			<NightvaleSubtitle variant="h4" align="center">
+export const Title = () => (
+  <TextWrapper>
+    <Centered>
+      <Nightvale className="nightvale" variant="h1" align="center">
+        And now, the weather
+      </Nightvale>
+      <NightvaleSubtitle variant="h4" align="center">
         Nightvale meteorology
-			</NightvaleSubtitle>
-		</Centered>
-	</TextWrapper>;
+      </NightvaleSubtitle>
+    </Centered>
+  </TextWrapper>
+);
