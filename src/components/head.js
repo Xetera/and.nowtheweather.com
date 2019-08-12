@@ -1,11 +1,10 @@
-import * as React from "react";
-import { Head } from "react-static";
-import favicon from "../../public/nightvale.jpg";
-import ReactGA from "react-ga";
+import React from "react";
+import { Helmet } from "react-helmet"
+import favicon from "../../static/nightvale.jpg";
 
 export const SiteHead = () => {
   return (
-    <Head>
+    <Helmet>
       <html lang="en" />
       <title>And now, the weather</title>
       <link rel="icon" href={favicon} />
@@ -23,6 +22,6 @@ export const SiteHead = () => {
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://and.nowtheweather.com" />
       <meta property="og:image" content={favicon} />
-    </Head>
+    </Helmet>
   );
 };

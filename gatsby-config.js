@@ -16,6 +16,15 @@ module.exports = {
     },
     `gatsby-transformer-json`,
     {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true
+        }
+      }
+    },
+    `gatsby-plugin-styled-components`,
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: "And now, the Weather",

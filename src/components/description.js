@@ -1,12 +1,7 @@
 import * as React from "react";
 import Typography from "@material-ui/core/es/Typography/Typography";
-import Paper from "@material-ui/core/Paper";
 import styled from "styled-components";
 import { textSize3 } from "../style";
-import icon from "../../public/nightvale.jpg";
-
-const DescriptionContainer = styled(Paper)`
-`;
 
 const Text = styled(Typography)`
   width: 100%;

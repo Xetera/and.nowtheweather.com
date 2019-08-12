@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/es/CardContent/CardContent";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Typography from "@material-ui/core/es/Typography/Typography";
 import Youtube from "react-youtube";
 import { textSize1, textSize3 } from "../style";

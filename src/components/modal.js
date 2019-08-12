@@ -59,11 +59,11 @@ export const TranscriptModal = ({ content, close, open }) => {
         {content === LOADING_TRANSCRIPT ? (
           <div>Transcript loading...</div>
         ) : (
-          <TranscriptContent dangerouslySetInnerHTML={{ __html: content }} />
-        )}
+            <TranscriptContent dangerouslySetInnerHTML={{ __html: content }} />
+          )}
         <Credits>
           Transcripts taken from{" "}
-          <a target="_blank" href="https://cecilspeaks.tumblr.com/">
+          <a target="_blank" href="https://cecilspeaks.tumblr.com/" rel="noopener noreferrer">
             Cecilspeaks
           </a>
         </Credits>
