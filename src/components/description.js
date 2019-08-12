@@ -42,8 +42,8 @@ export const Description = () => (
       who secretly lives in your home are nothing out of the ordinary.
     </Text>
     <Text>
-      In every episode, there is a song segment that lets listeners discover new music called <strong>the weather</strong>.
-      This is a collection of every single one of them.
+      In every episode, there is a song segment that lets listeners discover new music called <strong>The Weather</strong>.
+      This is a searchable collection of every single one of them.
     </Text>
   </Section >
 );
