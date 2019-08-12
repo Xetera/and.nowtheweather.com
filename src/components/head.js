@@ -4,9 +4,6 @@ import favicon from "../../public/nightvale.jpg";
 import ReactGA from "react-ga";
 
 export const SiteHead = () => {
-  ReactGA.initialize("UA-133545986-2");
-  ReactGA.pageview(`${window.location.pathname}${window.location.search}`);
-
   return (
     <Head>
       <html lang="en" />
