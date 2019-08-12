@@ -45,5 +45,8 @@ export const Description = () => (
       In every episode, there is a song segment that lets listeners discover new music called <strong>The Weather</strong>.
       This is a searchable collection of every single one of them.
     </Text>
+    <Text>
+      Click on an episode to listen to its weather.
+    </Text>
   </Section >
 );
