@@ -34,7 +34,7 @@
     "react-github-corner": "^2.3.0",
     "react-helmet": "^5.2.1",
     "react-hot-loader": "^4.3.12",
-    "react-static": "^7.0.10",
+    "react-static": "^7.5.0",
     "react-youtube": "^7.9.0",
     "simple-youtube-api": "^5.1.1",
     "styled-components": "^4.1.3",
