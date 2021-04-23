@@ -47,7 +47,7 @@
   "devDependencies": {
     "eslint-config-react-tools": "1.x.x",
     "gatsby-transformer-json": "^2.2.2",
-    "serve": "10.1.1"
+    "serve": "10.1.2"
   },
   "snyk": true
 }
