@@ -21,7 +21,7 @@
     "fuse.js": "^3.4.2",
     "gatsby": "^2.18.10",
     "gatsby-plugin-google-analytics": "^2.1.7",
-    "gatsby-plugin-manifest": "^2.2.5",
+    "gatsby-plugin-manifest": "^2.3.1",
     "gatsby-plugin-material-ui": "^2.1.5",
     "gatsby-plugin-offline": "^2.2.5",
     "gatsby-plugin-react-helmet": "^3.1.3",
